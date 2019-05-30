@@ -1,3 +1,5 @@
+
+const joi = require("joi")
 const GROUP_NAME = `orders`
 
 module.exports = [
@@ -9,7 +11,17 @@ module.exports = [
         },
         config:{
             tags:['api',GROUP_NAME],
-            description:'创建订单'
+            description:'创建订单',
+            validate:{
+                payload:{
+                    goodsList:joi.array().items(
+                        joi.object().keys({
+                            goods_id:joi.number().integer(),
+                            count:joi.number().integer()
+                        })
+                    )
+                }
+            }
         }
     },
     {
@@ -20,7 +32,12 @@ module.exports = [
         },
         config:{
             tags:['api',GROUP_NAME],
-            description:'支付订单'
+            description:'支付订单',
+            validate:{
+                params:{
+                    orderId:joi.string().required()
+                }
+            }
         }
     }
 ]

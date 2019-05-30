@@ -1,3 +1,4 @@
+const joi = require('joi')
 const GROUP_NAME = `shops`
 
 module.exports = [
@@ -9,7 +10,13 @@ module.exports = [
         },
         config: {
             tags:['api',GROUP_NAME],
-            description:`获取店铺列表`
+            description:`获取店铺列表`,
+            validate:{
+                query:{
+                    limit:joi.number().integer().min(1).default(10).description("每页条数"),
+                    page:joi.number().integer().min(1).default(1).description("当前页数")
+                }
+            }
         }
     },
     {
