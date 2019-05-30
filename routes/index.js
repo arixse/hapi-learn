@@ -1,3 +1,5 @@
+const shopRoutes = require("./shops")
+const orderRoutes = require('./orders')
 module.exports = [
     {
         method:'GET',
@@ -9,5 +11,7 @@ module.exports = [
             tags:['api','tests'],
             description:'测试'
         } 
-    }
+    },
+    ...shopRoutes,
+    ...orderRoutes
 ]
