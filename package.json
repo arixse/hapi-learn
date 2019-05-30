@@ -1,0 +1,24 @@
+{
+  "name": "hapi-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "env2": "^2.2.2",
+    "hapi": "16",
+    "hapi-swagger": "7",
+    "inert": "4",
+    "mysql2": "^1.6.5",
+    "package": "^1.0.1",
+    "sequelize": "^5.8.7",
+    "vision": "4"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^5.4.0"
+  }
+}
