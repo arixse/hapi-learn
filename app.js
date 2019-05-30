@@ -4,15 +4,14 @@ const config = require("./config")
 const routes = require("./routes")
 const pluginHapiSwagger = require("./plugins/hapi-swagger.js")
 const app = new Hapi.Server()
-
+app.connection({
+    host:config.host,
+    port:config.port
+})
 async function main() {
     await app.register([
         ...pluginHapiSwagger
     ])
-    app.connection({
-        host:config.host,
-        port:config.port
-    })
     app.route([
         ...routes
     ])
