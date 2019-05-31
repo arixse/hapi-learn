@@ -1,6 +1,6 @@
 const joi = require('joi')
 const models = require('../models')
-const {paginationDefine} = require("../utils/router-helper")
+const {paginationDefine,jwtHeaderDefine} = require("../utils/router-helper")
 const GROUP_NAME = `shops`
 
 module.exports = [
@@ -24,8 +24,9 @@ module.exports = [
             description:`获取店铺列表`,
             validate:{
                 query:{
-                    ...paginationDefine
-                }
+                    ...paginationDefine,
+                },
+                ...jwtHeaderDefine
             }
         }
     },
@@ -52,7 +53,8 @@ module.exports = [
                 },
                 params:{
                     shopId:joi.string().required().description('店铺id')
-                }
+                },
+                ...jwtHeaderDefine
             }
         }
     }

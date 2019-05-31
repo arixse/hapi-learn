@@ -5,4 +5,10 @@ const paginationDefine = {
     pagination:joi.boolean().description("是否开启分页，默认为true")
 }
 
-module.exports = {paginationDefine}
+const jwtHeaderDefine = {
+    headers:joi.object({
+        authorization:joi.string().required()
+    }).unknown()
+}
+
+module.exports = {paginationDefine,jwtHeaderDefine}

@@ -1,7 +1,7 @@
 
 const joi = require("joi")
 const GROUP_NAME = `orders`
-
+const {jwtHeaderDefine} = require('../utils/router-helper')
 module.exports = [
     {
         method:'POST',
@@ -20,7 +20,8 @@ module.exports = [
                             count:joi.number().integer()
                         })
                     )
-                }
+                },
+                ...jwtHeaderDefine
             }
         }
     },
@@ -36,7 +37,8 @@ module.exports = [
             validate:{
                 params:{
                     orderId:joi.string().required()
-                }
+                },
+                ...jwtHeaderDefine
             }
         }
     }
