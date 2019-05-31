@@ -3,6 +3,7 @@ const env = require("env2")("./.env")
 const config = require("./config")
 const routes = require("./routes")
 const pluginHapiSwagger = require("./plugins/hapi-swagger.js")
+const pluginPagination = require('./plugins/hapi-pagination')
 const app = new Hapi.Server()
 app.connection({
     host:config.host,
@@ -10,7 +11,8 @@ app.connection({
 })
 async function main() {
     await app.register([
-        ...pluginHapiSwagger
+        pluginPagination,
+        ...pluginHapiSwagger,
     ])
     app.route([
         ...routes

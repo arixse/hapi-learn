@@ -1,5 +1,6 @@
 const joi = require('joi')
 const models = require('../models')
+const {paginationDefine} = require("../utils/router-helper")
 const GROUP_NAME = `shops`
 
 module.exports = [
@@ -7,20 +8,22 @@ module.exports = [
         method:'GET',
         path:`/${GROUP_NAME}`,
         handler:async (request,reply) =>{
-            const result = await models.shops.findAll({
+            const {rows:results,count:totalCount} = 
+            await models.shops.findAndCount({
                 attributes:[
                     'id','name'
-                ]
-            });
-            reply(result)
+                ],
+                limit:request.query.limit,
+                offset:(request.query.page-1)*request.query.limit
+            })
+            reply({results,totalCount})
         },
         config: {
             tags:['api',GROUP_NAME],
             description:`获取店铺列表`,
             validate:{
                 query:{
-                    limit:joi.number().integer().min(1).default(10).description("每页条数"),
-                    page:joi.number().integer().min(1).default(1).description("当前页数")
+                    ...paginationDefine
                 }
             }
         }
