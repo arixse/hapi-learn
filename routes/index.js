@@ -1,17 +1,8 @@
 const shopRoutes = require("./shops")
 const orderRoutes = require('./orders')
+const usersRoutes = require('./users')
 module.exports = [
-    {
-        method:'GET',
-        path:'/',
-        handler:(request,reply)=>{
-            reply('Hello ')
-        },
-        config: {
-            tags:['api','tests'],
-            description:'测试'
-        } 
-    },
     ...shopRoutes,
-    ...orderRoutes
+    ...orderRoutes,
+    ...usersRoutes
 ]
