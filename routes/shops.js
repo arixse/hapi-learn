@@ -8,8 +8,9 @@ module.exports = [
         method:'GET',
         path:`/${GROUP_NAME}`,
         handler:async (request,reply) =>{
+            console.log(1)
             const {rows:results,count:totalCount} = 
-            await models.shops.findAndCount({
+            await models.shops.findAndCountAll({
                 attributes:[
                     'id','name'
                 ],
