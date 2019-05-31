@@ -35,7 +35,7 @@ module.exports = [
         handler:async (request,reply) =>{
             const {rows:results,count:totalCount} = await models.goods.findAndCountAll({
                 where:{
-                    shop_id:request.params.showId
+                    shop_id:request.params.shopId
                 },
                 attributes:['id','name'],
                 limit:request.query.limit,
@@ -51,7 +51,7 @@ module.exports = [
                     ...paginationDefine
                 },
                 params:{
-                    shopId:joi.number().integer().required().description('店铺id')
+                    shopId:joi.string().required().description('店铺id')
                 }
             }
         }
