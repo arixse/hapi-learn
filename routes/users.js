@@ -30,7 +30,8 @@ module.exports = [
         method:'POST',
         path:`/${GROUP_NAME}/wxLogin`,
         handler:async (request,reply)=>{
-            reply()
+            const appid = config.wxAppId;
+            const secret = config.wxSecret;
         },
         config: {
             auth:false,
