@@ -10,7 +10,7 @@ const decryptData = (encryptedData,iv,sessionkey,appid)=>{
         const decipher = crypto.createDecipheriv('aes-128-cbc',sessionKeyNew,ivNew);
         //设置自动 padding 为 true,删除填充补位
         decipher.setAutoPadding(true);
-        decoded = decipher.update(encryptedData,'binary','utf8');
+        decoded = decipher.update(encryptedDataNew,'binary','utf8');
         decoded += decipher.final('utf8');
         decoded = JSON.parse(decoded);
         //decoded是解密后的用户信息
