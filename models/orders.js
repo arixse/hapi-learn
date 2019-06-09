@@ -1,0 +1,21 @@
+module.exports = (sequelize,DataTypes) =>sequelize.define(
+    'orders',
+    {
+        id:{
+            type:DataTypes.INTEGER,
+            autoIncrement:true,
+            primaryKey:true
+        },
+        user_id:{
+            type:DataTypes.INTEGER,
+            allowNull:false
+        },
+        payment_status:{
+            type:DataType.ENUM('0','1'),
+            defaultValue:'0'
+        }
+    },
+    {
+        tableName:'orders'
+    }
+)

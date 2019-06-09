@@ -1,0 +1,49 @@
+"use strict";
+
+module.exports = {
+  up: (queryInterface, Sequelize) => {
+    /*
+      Add altering commands here.
+      Return a promise to correctly handle asynchronicity.
+
+      Example:
+      return queryInterface.createTable('users', { id: Sequelize.INTEGER });
+    */
+    return queryInterface.createTable("order_goods", {
+      id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+      },
+      order_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
+      good_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
+      signal_price: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
+      count: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
+      create_at:Sequelize.DATE,
+      update_at:Sequelize.DATE
+    });
+  },
+
+  down: (queryInterface, Sequelize) => {
+    /*
+      Add reverting commands here.
+      Return a promise to correctly handle asynchronicity.
+
+      Example:
+      return queryInterface.dropTable('users');
+    */
+   return queryInterface.dropTable('order_goods')
+  }
+};

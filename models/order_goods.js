@@ -1,0 +1,31 @@
+module.exports = (sequelize,DataTypes)=>sequelize.define(
+    'order_goods',
+    {
+        id:{
+            type:DataTypes.INTEGER,
+            autoIncrement:true,
+            primaryKey:true
+        },
+        order_id:{
+            type:DataTypes.INTEGER,
+            allowNull:false
+        },
+        good_d:{
+            type:DataTypes.INTEGER,
+            allowNull:false
+        },
+        signal_prices:{
+            type:DataTypes.INTEGER,
+            allowNull:false
+        },
+        count:{
+            type:DataTypes.INTEGER,
+            allowNull:false
+        },
+        create_at:DataTypes.Date,
+        update_at:DataTypes.Date
+    },
+    {
+        tableName:'order_goods'
+    }
+)
