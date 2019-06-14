@@ -11,7 +11,7 @@ module.exports = (sequelize,DataTypes) =>sequelize.define(
             allowNull:false
         },
         payment_status:{
-            type:DataType.ENUM('0','1'),
+            type:DataTypes.ENUM('0','1'),
             defaultValue:'0'
         }
     },

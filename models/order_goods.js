@@ -21,9 +21,7 @@ module.exports = (sequelize,DataTypes)=>sequelize.define(
         count:{
             type:DataTypes.INTEGER,
             allowNull:false
-        },
-        create_at:DataTypes.Date,
-        update_at:DataTypes.Date
+        }
     },
     {
         tableName:'order_goods'
